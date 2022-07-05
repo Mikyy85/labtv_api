@@ -1,7 +1,6 @@
 package com.project.labtvapi.model;
 
-import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,27 +11,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity(name = "Star")
-@Table(name = "star")
-public class Star implements Serializable {
-
-  private static final long serialVersionUID = 8708656219150104974L;
+@Entity(name = "Director")
+@Table(name = "director")
+public class Director {
 
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
-  public int id;
+  private int id;
 
-  @Column(name = "name", length = 50, nullable = false)
-  private String name;
-
-  @Column(name = "surname", length = 50, nullable = false)
-  private String surname;
+  @Column(name = "full_name", length = 255, nullable = false)
+  private String fullName;
 
   @Column(name = "birth_date", nullable = false)
   private Date birth_date;
 
   @ManyToOne
-  @JoinColumn(name = "sesso")
+  @JoinColumn(name = "id_sesso")
   private Sesso sesso;
 
   public int getId() {
@@ -43,20 +37,12 @@ public class Star implements Serializable {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getFullName() {
+    return fullName;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getSurname() {
-    return surname;
-  }
-
-  public void setSurname(String surname) {
-    this.surname = surname;
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
   }
 
   public Date getBirth_date() {

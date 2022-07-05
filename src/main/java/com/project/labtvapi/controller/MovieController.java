@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,9 @@ import com.project.labtvapi.model.Movie;
 import com.project.labtvapi.model.Trailer;
 import com.project.labtvapi.service.MovieService;
 
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
-@RequestMapping("/api/movie")
+@RequestMapping("/api/movie/full")
 public class MovieController {
 
   @Autowired
@@ -30,6 +32,7 @@ public class MovieController {
   private MovieService mService;
 
   // Lista Films
+  @CrossOrigin(origins = "http://localhost:4200/")
   @GetMapping(value = "/list", produces = "application/json")
   ResponseEntity<Object> getMovieList() {
 
@@ -80,7 +83,7 @@ public class MovieController {
   ResponseEntity<Set<Trailer>> getTrailerById(@PathVariable(name = "id", required = false) int id) {
     if (id == 0)
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    
+
     Movie movies = (Movie) mDao.findById(id).get();
     Set<Trailer> trailers = movies.getTrailers();
     return new ResponseEntity<Set<Trailer>>((Set<Trailer>) trailers, HttpStatus.OK);

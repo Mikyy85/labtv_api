@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @Table(name = "trailer")
 public class Trailer implements Serializable {
 
+  private static final long serialVersionUID = -2019340817385652250L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
   private int id;

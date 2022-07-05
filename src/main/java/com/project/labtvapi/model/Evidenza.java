@@ -11,7 +11,9 @@ import javax.persistence.Table;
 @Table(name = "evidenza")
 public class Evidenza implements Serializable {
 
-  @Id
+	private static final long serialVersionUID = -5428063675564257820L;
+
+	@Id
   private String id;
 
   @Column(name = "title", nullable = false, length = 100)
