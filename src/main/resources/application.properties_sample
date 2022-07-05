@@ -1,0 +1,6 @@
+spring.datasource.driver-class-name = CONNECTOR_DRIVER
+spring.datasource.url = LINK_DATABASE
+spring.datasource.username = USERNAME_DB
+spring.datasource.password = PASSWORD_DB 
+
+server.port=8051
